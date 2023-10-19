@@ -1,66 +1,86 @@
-//
-//  ViewController.swift
-//  PiedraPapelTijera
-//
-//  Created by carlos on 18/10/23.
-//
-
 import UIKit
+import Toast
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var usuarioPiedra: UIButton!
+    //OUTLETS
     
-    @IBOutlet weak var usuarioPapel: UIButton!
+    @IBOutlet weak var ivComputer: UIImageView!
     
-    @IBOutlet weak var usuarioTijera: UIButton!
+    @IBOutlet weak var lbUser: UILabel!
     
-    @IBOutlet weak var contadorUser: UILabel!
+    @IBOutlet weak var lbComputer: UILabel!
     
-    @IBOutlet weak var contadorPC: UILabel!
+    //VARIABLES
+    var contadorUser: Int!
+    var contadorComputer: Int!
+    var eleccionUser: String!
+    var eleccionComputer: String!
     
-    @IBOutlet weak var imgPC: UIImageView!
-    
+    var imagenes = [UIImage (named: "piedra"), UIImage (named: "papel"), UIImage (named: "tijera")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        contadorUser = 0
+        contadorComputer = 0
     }
-    func aleatorio() -> Int {
-        return Int.random(in: 1...3)
-        
+
+    @IBAction func btnPiedraClick(_ sender: Any) {
+        eleccionUser = "PIEDRA"
+        tiradaOrdenador()
     }
-    
-    func sacarImagen(eleccionPC:Int){
-        var imagen = ""
-        
-        switch eleccionPC {
-        case 1: imagen = "piedra"
-        case 2: imagen = "papel"
-        case 3: imagen = "tijera"
-        default: print("FATAL ERROR")
-        }
-        imgPC.image = UIImage(named: imagen)
+  
+    @IBAction func btnPapelClick(_ sender: Any) {
+        eleccionUser = "PAPEL"
+        tiradaOrdenador()
     }
     
-    
-    @IBAction func usuarioPiedra(_ sender: Any) {
-        var eleccionUsuario = "piedra"
-        
-        
+    @IBAction func btnTijeraClick(_ sender: Any) {
+        eleccionUser = "TIJERA"
+        tiradaOrdenador()
     }
+
+func tiradaOrdenador(){
+    var numAleatorio: Int
+    numAleatorio = Int.random(in: 0..<3)
     
+    ivComputer.image = imagenes[numAleatorio]
     
-    @IBAction func usuarioPapel(_ sender: Any) {
-        var eleccionUsuario = "papel"
-        
+    switch numAleatorio {
+    case 0: eleccionComputer = "PIEDRA"
+    case 1: eleccionComputer = "PAPEL"
+    default: eleccionComputer = "TIJERA"
     }
-    
-    
-    @IBAction func usuarioTijera(_ sender: Any) {
-        var eleccionUsuario = "tijera"
-        
-    }
-    
 }
 
+func ganador() {
+    if eleccionComputer == eleccionUser{
+        self.view.makeToast("EMPATE")
+    }else{
+        switch eleccionUser {
+        case "PAPEL":
+            if eleccionComputer == "PIEDRA"{
+                contadorUser += 1
+            }
+            else{
+                contadorComputer += 1
+            }
+            
+        case "PIEDRA":
+            if eleccionComputer == "PAPEL"{
+                contadorComputer += 1
+            }else{
+                contadorUser += 1
+            }
+        default:
+            if eleccionComputer == "PAPEL"{
+                contadorUser += 1
+            }else{
+                contadorComputer += 1
+                }
+            }
+        }
+            lbUser.text = "User: \n \(String(contadorUser))"
+            lbComputer.text = "Computer:\n \(String(contadorComputer))"
+    }
+}

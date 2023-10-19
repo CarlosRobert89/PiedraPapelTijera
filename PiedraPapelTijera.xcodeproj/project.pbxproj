@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07338D192AE127FD0063EEB1 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 07338D182AE127FD0063EEB1 /* Toast */; };
 		07BE32C62AE02AE6002879D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BE32C52AE02AE6002879D7 /* AppDelegate.swift */; };
 		07BE32C82AE02AE6002879D7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BE32C72AE02AE6002879D7 /* SceneDelegate.swift */; };
 		07BE32CA2AE02AE6002879D7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BE32C92AE02AE6002879D7 /* ViewController.swift */; };
@@ -56,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07338D192AE127FD0063EEB1 /* Toast in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,6 +145,9 @@
 			dependencies = (
 			);
 			name = PiedraPapelTijera;
+			packageProductDependencies = (
+				07338D182AE127FD0063EEB1 /* Toast */,
+			);
 			productName = PiedraPapelTijera;
 			productReference = 07BE32C22AE02AE6002879D7 /* PiedraPapelTijera.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +220,9 @@
 				Base,
 			);
 			mainGroup = 07BE32B92AE02AE6002879D7;
+			packageReferences = (
+				07338D172AE127FD0063EEB1 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+			);
 			productRefGroup = 07BE32C32AE02AE6002879D7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -596,6 +604,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		07338D172AE127FD0063EEB1 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		07338D182AE127FD0063EEB1 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 07338D172AE127FD0063EEB1 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 07BE32BA2AE02AE6002879D7 /* Project object */;
 }
